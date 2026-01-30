@@ -33,14 +33,14 @@
         .hide { display: none; }
         .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); }
         
-        /* Hide scrollbar for Chrome, Safari and Opera */
+       
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen selection:bg-blue-500/30">
 
-    <!-- Navbar -->
+    
     <nav class="bg-slate-900/80 border-b border-slate-800 p-4 sticky top-0 z-50 backdrop-blur-md">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity" onclick="showView('home')">
@@ -74,25 +74,25 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
+ 
     <main id="main-content" class="max-w-6xl mx-auto px-4 py-12">
-        <!-- Views injected here -->
+       
     </main>
 
-    <!-- Floating WhatsApp Button -->
+    
     <a href="https://wa.me/94716344483" target="_blank" class="fixed bottom-6 right-6 z-[60] bg-emerald-500 hover:bg-emerald-400 text-white p-4 rounded-full shadow-2xl shadow-emerald-500/20 transition-all hover:scale-110 active:scale-95 animate-bounce-subtle flex items-center justify-center">
         <i data-lucide="message-circle" class="w-7 h-7"></i>
     </a>
 
-    <!-- Notification Toast -->
+   
+    
     <div id="toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] px-6 py-3 rounded-2xl shadow-2xl flex items-center gap-3 hide border bg-slate-900/90 border-blue-500 text-blue-200 transition-all duration-300">
         <span id="toast-message"></span>
     </div>
 
-    <!-- Footer -->
     <footer class="mt-20 border-t border-slate-900 py-12 px-4 bg-slate-950">
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-            <!-- Branding -->
+        
             <div class="space-y-4">
                 <div class="flex items-center gap-2">
                     <i data-lucide="zap" class="text-blue-500 w-6 h-6"></i>
@@ -101,7 +101,6 @@
                 <p class="text-slate-500 text-sm leading-relaxed">The #1 destination for Aviator and Roulette analysis tools. High accuracy signals and patterns delivered to your fingertips.</p>
             </div>
 
-            <!-- Links -->
             <div>
                 <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-xs">Quick Links</h4>
                 <ul class="space-y-2 text-slate-500 text-sm">
@@ -112,7 +111,6 @@
                 </ul>
             </div>
 
-            <!-- Support -->
             <div>
                 <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-xs">Support Center</h4>
                 <div class="space-y-3">
@@ -148,7 +146,7 @@
         </div>
     </footer>
 
-    <!-- Firebase SDKs -->
+    
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { 
@@ -165,7 +163,7 @@
         } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Firebase Config
+       
         const firebaseConfig = {
             apiKey: "AIzaSyAu2rosyyF2AJi_hVo-8XhXGsofTJ9zzdQ",
             authDomain: "myapp-1bc82.firebaseapp.com",
@@ -180,7 +178,7 @@
         const db = getFirestore(app);
         const appId = "thineth-apps";
 
-        // State
+      
         let currentUser = null;
         let cart = [];
         const products = [
@@ -194,7 +192,7 @@
             { id: 'mem_life', name: 'Lifetime Partner', price: 6500, duration: 'Forever' }
         ];
 
-        // Global functions
+        
         window.showView = renderView;
         window.addToCart = (id) => {
             const item = products.find(p => p.id === id) || memberships.find(m => m.id === id);
@@ -210,7 +208,7 @@
         };
         window.logout = () => signOut(auth);
 
-        // Social Logins
+        
         window.loginGoogle = async () => {
             const provider = new GoogleAuthProvider();
             try {
@@ -229,7 +227,7 @@
             } catch(e) { showToast(e.message, "error"); }
         };
 
-        // Auth Logic
+
         onAuthStateChanged(auth, (user) => {
             currentUser = user;
             const userSection = document.getElementById('user-section');
@@ -260,7 +258,7 @@
         }
         initAuth();
 
-        // UI Rendering
+     
         function renderView(view) {
             const container = document.getElementById('main-content');
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -427,7 +425,7 @@
             lucide.createIcons();
         }
 
-        // Feature Listeners
+       
         function setupCheckoutListeners() {
             const dropzone = document.getElementById('dropzone');
             const fileInput = document.getElementById('receipt-file');
@@ -547,7 +545,7 @@
             cart.length > 0 ? count.classList.remove('hide') : count.classList.add('hide');
         }
 
-        // Initialize
+        
         renderView('home');
     </script>
 </body>
